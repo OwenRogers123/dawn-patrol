@@ -1,0 +1,16 @@
+{
+  "name": "Dawn Patrol — surf coach",
+  "short_name": "Dawn Patrol",
+  "description": "Know before you go. A personalized surf coach that tells you whether to paddle out.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#06122a",
+  "theme_color": "#0b3a5e",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

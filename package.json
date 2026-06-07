@@ -1,0 +1,15 @@
+{
+  "name": "dawn-patrol",
+  "version": "0.1.0",
+  "description": "Know before you go — a personalized surf coach that tells you whether to paddle out.",
+  "type": "module",
+  "scripts": {
+    "test": "node tests/run-tests.mjs",
+    "alerts": "node alerts/server.mjs",
+    "alerts:send": "curl -s -X POST http://localhost:8788/send"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "web-push": "^3.6.7"
+  }
+}

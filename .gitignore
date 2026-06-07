@@ -1,0 +1,6 @@
+node_modules/
+alerts/subs.json
+alerts/vapid.json
+.DS_Store
+.vercel
+*.zip

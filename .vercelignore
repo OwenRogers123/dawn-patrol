@@ -1,0 +1,7 @@
+node_modules
+tests
+alerts
+tools
+docs
+*.zip
+package-lock.json

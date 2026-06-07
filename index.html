@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dawn Patrol — know before you go</title>
+  <meta name="description" content="A personalized surf coach that answers one question: should YOU paddle out? Tuned to your skill, board, and home break." />
+  <meta property="og:title" content="Dawn Patrol — know before you go" />
+  <meta property="og:description" content="A 10ft day is a dream for a pro and a hazard for a beginner. Dawn Patrol turns the forecast into a straight go / no-go, tuned to you." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%85%3C/text%3E%3C/svg%3E" />
+  <!-- PWA: installable + offline -->
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="theme-color" content="#0b3a5e" />
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Dawn Patrol" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=19" />
+</head>
+<body>
+  <div class="bg">
+    <div class="sun"></div>
+    <div class="stars"></div>
+    <div class="waves" aria-hidden="true">
+      <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <path class="wave wave-1" d="M0,160 C240,220 480,100 720,140 C960,180 1200,260 1440,180 L1440,320 L0,320 Z"></path>
+        <path class="wave wave-2" d="M0,200 C240,140 480,260 720,210 C960,160 1200,120 1440,200 L1440,320 L0,320 Z"></path>
+        <path class="wave wave-3" d="M0,250 C320,210 560,290 800,260 C1040,230 1280,280 1440,250 L1440,320 L0,320 Z"></path>
+      </svg>
+    </div>
+  </div>
+
+  <header class="topbar">
+    <div class="logo" id="logo" role="button" tabindex="0" title="Refresh Dawn Patrol">🌅 Dawn Patrol</div>
+    <button id="resetBtn" class="ghost-btn hidden">← Edit profile</button>
+  </header>
+
+  <!-- ONBOARDING -->
+  <main id="onboarding" class="screen">
+    <div class="hero">
+      <h1>Should <em>you</em> paddle out today?</h1>
+      <p class="sub">The same forecast means different things to different surfers. Dawn Patrol gives <em>you</em> a straight answer — tuned to your skill, your board, and your home break.</p>
+    </div>
+
+    <form id="profileForm" class="card">
+      <label class="field">
+        <span>Where do you surf?</span>
+        <button type="button" id="geoBtn" class="locate-btn is-disabled">📍 Find the best breaks near me</button>
+        <small id="locateHint" class="locate-hint">Set your skill, board &amp; wave size below to unlock this</small>
+        <div class="search-wrap">
+          <input type="text" id="spotSearch" placeholder="Search a break — e.g. Rincon, Trestles…" autocomplete="off" />
+          <button type="button" id="spotSearchIcon" class="search-icon" aria-label="Search a different spot" title="Search a different spot">🔍</button>
+          <div id="spotResults" class="spot-results hidden"></div>
+        </div>
+        <small id="spotNote" class="hint"></small>
+        <button type="button" id="addSpotBtn" class="mini-btn">＋ Add my own spot</button>
+      </label>
+
+      <!-- Custom spot mini-form -->
+      <div id="addSpotForm" class="subcard hidden">
+        <label class="field">
+          <span>Spot name</span>
+          <input type="text" id="newSpotName" placeholder="e.g. The Hook" maxlength="40" />
+        </label>
+        <div class="field">
+          <span>Location</span>
+          <button type="button" id="newSpotGeo" class="mini-btn">📍 Use my current location</button>
+          <small id="newSpotCoords" class="hint">No location set yet.</small>
+        </div>
+        <label class="field">
+          <span>Break type</span>
+          <div class="segmented" id="newSpotType">
+            <button type="button" data-val="beach" class="active">Beach</button>
+            <button type="button" data-val="point">Point</button>
+            <button type="button" data-val="reef">Reef</button>
+          </div>
+        </label>
+        <small id="newSpotFacing" class="hint"></small>
+        <div class="spot-actions">
+          <button type="button" id="saveSpotBtn" class="mini-btn primary-mini">Save spot</button>
+          <button type="button" id="cancelSpotBtn" class="mini-btn">Cancel</button>
+        </div>
+      </div>
+
+      <label class="field">
+        <span>Skill level: <strong id="skillLabel">3 · Intermediate</strong></span>
+        <div class="segmented" id="skill">
+          <button type="button" data-val="1">1</button>
+          <button type="button" data-val="2">2</button>
+          <button type="button" data-val="3" class="active">3</button>
+          <button type="button" data-val="4">4</button>
+          <button type="button" data-val="5">5</button>
+        </div>
+        <div class="range-ends"><small>Beginner</small><small>Expert</small></div>
+      </label>
+
+      <label class="field">
+        <span>Board</span>
+        <div class="chips" id="board">
+          <button type="button" data-val="softtop">Soft-top</button>
+          <button type="button" data-val="longboard">Longboard</button>
+          <button type="button" data-val="fish">Fish</button>
+          <button type="button" data-val="funboard" class="active">Funboard</button>
+          <button type="button" data-val="shortboard">Shortboard</button>
+          <button type="button" data-val="stepup">Step-up</button>
+          <button type="button" data-val="gun">Gun</button>
+        </div>
+      </label>
+
+      <label class="field">
+        <span>Biggest wave you're comfortable on: <strong id="maxFtLabel">6 ft</strong></span>
+        <input type="range" id="maxFt" min="2" max="20" step="1" value="6" />
+        <div class="range-ends"><small>2 ft</small><small>20 ft+</small></div>
+      </label>
+
+      <button type="submit" class="primary-btn">Get my call →</button>
+    </form>
+  </main>
+
+  <!-- RESULTS -->
+  <main id="results" class="screen hidden">
+    <div id="verdictCard" class="verdict-card">
+      <div class="spot-head">
+        <button type="button" id="spotMenuBtn" class="spot-menu-btn">
+          <h2 id="rSpotName">—</h2>
+          <span class="spot-caret">▾</span>
+        </button>
+        <div id="rSpotRegion" class="spot-region"></div>
+        <div id="spotMenu" class="spot-menu hidden"></div>
+      </div>
+      <div id="offlineBadge" class="offline-badge hidden">⏳ Offline — showing your last saved forecast</div>
+      <div id="verdictBadge" class="verdict-badge">—</div>
+      <div id="hazardBanner" class="hazard-banner hidden"></div>
+      <p id="headline" class="headline"></p>
+      <div class="gauge-wrap">
+        <svg class="gauge" viewBox="0 0 120 120">
+          <circle class="gauge-track" cx="60" cy="60" r="52"></circle>
+          <circle id="gaugeArc" class="gauge-arc" cx="60" cy="60" r="52"></circle>
+        </svg>
+        <div class="gauge-center">
+          <span id="scoreNum">0</span>
+          <small>/ 100</small>
+        </div>
+      </div>
+      <div class="score-caption">your surf score right now</div>
+      <div class="verdict-actions">
+        <button id="shareBtn" class="share-btn">📤 Share this call</button>
+        <button id="compareBtn" class="share-btn compare-trigger">⚖️ Same wave, different surfer</button>
+      </div>
+    </div>
+
+    <section id="weekCard" class="week-card">
+      <h3>This week</h3>
+      <div id="weekStrip" class="week-strip"></div>
+    </section>
+
+    <section class="reasons-card">
+      <h3>Why</h3>
+      <ul id="reasons"></ul>
+    </section>
+
+    <section class="timeline-card">
+      <h3 id="timelineHeading">Today, hour by hour</h3>
+      <div id="timeline" class="timeline"></div>
+      <small class="hint">🟢 = your best window to paddle out. Tap any hour for details.</small>
+    </section>
+
+    <section id="gearCard" class="gear-card">
+      <h3>What to wear</h3>
+      <div id="gearLine" class="gear-line"></div>
+    </section>
+
+    <section id="alertsCard" class="alerts-card">
+      <h3>🔔 Dawn alerts</h3>
+      <p class="alerts-copy">Get pinged the moment any break near you is firing — before you're even awake.</p>
+      <label class="alerts-thresh">Alert me when it hits <strong id="alertThreshLabel">70</strong>+
+        <input type="range" id="alertThresh" min="50" max="90" step="5" value="70" />
+      </label>
+      <button type="button" id="alertEnableBtn" class="primary-btn alerts-btn">🔔 Turn on dawn alerts</button>
+      <div id="alertStatus" class="alerts-status hidden"></div>
+    </section>
+
+    <p class="source">Live data: Open-Meteo Marine &amp; Weather APIs · Local break knowledge by Dawn Patrol</p>
+    <p class="disclaimer">⚠️ Dawn Patrol is guidance, not a safety device. Conditions change fast — know your limits and never surf alone.</p>
+  </main>
+
+  <!-- NEARBY SPOTS (ranked) -->
+  <main id="nearby" class="screen hidden">
+    <div class="nearby-head">
+      <button id="nearbyBack" class="ghost-btn">← Back</button>
+      <h2>Best bets near you</h2>
+      <p id="nearbySub" class="nearby-sub"></p>
+    </div>
+    <div id="nearbyList" class="nearby-list"></div>
+  </main>
+
+  <footer class="site-footer">By Owen Rogers · 6/6/26</footer>
+
+  <div id="loader" class="loader hidden">
+    <div class="spinner"></div>
+    <p>Reading the ocean…</p>
+  </div>
+
+  <script src="js/spots.js?v=19"></script>
+  <script src="js/forecast.js?v=19"></script>
+  <script src="js/coach.js?v=19"></script>
+  <script src="js/app.js?v=19"></script>
+  <script src="js/alerts.js?v=19"></script>
+</body>
+</html>
