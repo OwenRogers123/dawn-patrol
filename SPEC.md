@@ -10,19 +10,18 @@
 
 ## 1. Vision
 
-Surfline owns surf forecasting but shows everyone the **same numbers behind a paywall**. A 10 ft day is a dream for a pro and a hazard for a beginner — yet they see the identical forecast, and neither gets a straight answer to the only question that matters: *should I paddle out right now?*
+Surf forecasting delivers excellent ocean data, but the data is the same for everyone. A 10 ft day is a dream for a pro and a hazard for a beginner — yet they read the identical forecast, and the data alone never answers the only question that matters: *should I paddle out right now?*
 
-**Dawn Patrol** translates raw ocean data into a **personal go / no-go** call, tuned to the individual surfer's skill, board, and comfort, enriched with **local break knowledge** — and it's **free**.
+**Dawn Patrol** translates raw ocean data into a **personal go / no-go** call, tuned to the individual surfer's skill, board, and comfort, enriched with **local break knowledge**. It's a decision layer on top of the forecast, not a replacement for it.
 
-### Positioning vs. Surfline
-| | Surfline | Dawn Patrol |
+### Where it fits
+| | Raw forecast | Dawn Patrol |
 |---|---|---|
 | Output | Raw numbers | A personal decision (GO / MARGINAL / NO) |
-| Skill-aware | ❌ same for everyone | ✅ rated 1–5, plus board & comfort |
+| Skill-aware | Same for everyone | Rated 1–5, plus board & comfort |
 | Local knowledge | Generic | Per-spot (facing, ideal swell/size/tide) |
-| Price | $8–10/mo | Free & open |
 
-**Moat:** not data we hoard, but the *personalization layer* + *curated local-knowledge database* + *community spots* — and being genuinely free.
+**The defensible piece:** not data hoarding, but the *personalization layer* + *curated local-knowledge database* + *community spots*.
 
 ---
 
@@ -40,7 +39,7 @@ Surfline owns surf forecasting but shows everyone the **same numbers behind a pa
 2. **Personal, not generic.** Every number is filtered through *this* surfer.
 3. **Honest about uncertainty.** Show confidence; never fake precision (e.g., auto-estimated spot facing is labeled as such).
 4. **Stoke-optimistic, safety-aware.** Lean toward GO on borderline *quality* calls, but always warn on *hazard* (see §7).
-5. **Free and open.** No paywalls; open-source; self-hostable.
+5. **Free and open.** Free to use; open-source; self-hostable.
 
 ---
 
@@ -145,7 +144,7 @@ soft-top [0.5–4], longboard [0.5–6], fish [1–6], funboard [1–7], shortbo
 | **NOAA CO-OPS tides** | true tide predictions | Free | US only; replaces the sea-level proxy where available. |
 
 - **Facing estimation** for un-curated spots = circular mean of prevailing swell direction (honest approximation; labeled in UI). Production upgrade path: OSM coastline vectors.
-- **No Surfline / no scraping** of competitor proprietary data — legal and strategic.
+- **No scraping of any proprietary forecast data** — built only on free, openly-licensed public sources. Legal and strategic.
 
 **Units:** display in **feet, °F, mph**; store internally in SI (m, °C, km/h) and convert at the edge.
 

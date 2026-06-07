@@ -1,31 +1,29 @@
 # 🌅 Dawn Patrol
 
-**Know before you go.** Your personal surf coach — disrupting Surfline.
+**Know before you go.** A personal surf coach: a go / no-go decision layer on top of the forecast.
 
 Build Night #3 — Vibe Coding Club
 
 ## The pitch
 
-Surfline owns surf forecasting, but it has a soft underbelly:
+Surf forecasting is excellent at delivering the numbers. The hard part is left to the surfer:
 
-- **It paywalls everything** — forecasts, cams, swell detail all behind $8–10/mo.
-- **It shows everyone the same numbers.** A 10ft double-overhead day is paradise for a pro and life-threatening for a beginner. Surfline gives them the identical forecast.
-- **It's data overload.** Swell height, period, direction, wind, tide — all dumped on you. It never answers the one question that matters: *should **I** paddle out right now?*
+- **The same forecast means different things to different people.** A 10ft day is a dream for a pro and a hazard for a beginner — but they read the identical forecast.
+- **Numbers aren't a decision.** Swell height, period, direction, wind, tide — interpreting all of it into "should *I* paddle out right now?" is the real work.
 
-**Dawn Patrol answers that one question — personalized to you, for free.**
+**Dawn Patrol does that interpretation for you — personalized to you, for free.**
 
 You tell it your skill level, your board, your home break, and the biggest wave you're
 comfortable on. It pulls live ocean data and gives you a straight call: **GO SURF**,
 **MARGINAL**, or **NOT WORTH IT** — with the *why* in plain English and your best window of the day.
 
-## Why it beats Surfline
+## What makes it different
 
-| | Surfline | Dawn Patrol |
+| | Typical forecast | Dawn Patrol |
 |---|---|---|
-| Answer | Raw numbers | A personal go / no-go |
-| Skill-aware | ❌ same for everyone | ✅ beginner ≠ pro |
+| Output | Raw numbers | A personal go / no-go |
+| Skill-aware | Same for everyone | Tuned to you (beginner ≠ pro) |
 | Local break knowledge | Generic | Per-spot, baked in |
-| Price | $8–10/mo | Free |
 
 The killer demo: **identical 10ft clean conditions → an advanced surfer gets GO SURF (100/100),
 an intermediate gets NOT WORTH IT ("over your skill ceiling").** Same ocean, different answer.
